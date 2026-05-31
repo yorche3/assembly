@@ -91,12 +91,16 @@ foundations/
 ├── helloworld/              # 01_Hello_World
 │   ├── hello_world.asm      # Imprime "Hello, World!"
 │   ├── Makefile             # Build Linux
-│   └── build.ps1            # Build Windows
+│   ├── build.ps1            # Build Windows
+│   ├── .gitignore           # Ignora *.o, ejecutables
+│   └── README.md
 │
 ├── hellouser/               # 02_Hello_User
 │   ├── hello_user.asm       # Lee nombre y saluda
 │   ├── Makefile             # Build Linux
-│   └── build.ps1            # Build Windows
+│   ├── build.ps1            # Build Windows
+│   ├── .gitignore           # Ignora *.o, ejecutables
+│   └── README.md
 │
 ├── unit_test/
 │   └── calculator/          # 03_Unit_Test_Calculator
@@ -107,7 +111,9 @@ foundations/
 │       │   ├── run_tests.asm
 │       │   └── print_utils.asm
 │       ├── Makefile
-│       └── run_tests.ps1
+│       ├── run_tests.ps1
+│       ├── .gitignore
+│       └── README.md
 │
 └── numbers/                 # 04_Numbers
     ├── src/
@@ -122,6 +128,7 @@ foundations/
     │   ├── test_utils.asm
     │   └── test_macros.inc
     ├── Makefile
+    ├── .gitignore
     └── README.md
 ```
 
@@ -159,5 +166,14 @@ winget install nasm
 Y descargar [GoLink](https://www.godevtool.com/) para enlazar en Windows nativo, o usar WSL para los proyectos multi-archivo.
 
 ---
+
+## ▶️ Siguiente / Next
+
+👉 Después de fundamentos, continúa con [Fase 1 — Algoritmos Puros](https://yorche3.github.io/programming_languages/ROADMAP/#fase-1--algoritmos-puros--algorithms-pure-).
+👉 After foundations, continue with [Phase 1 — Algorithms Pure](https://yorche3.github.io/programming_languages/ROADMAP/#fase-1--algoritmos-puros--algorithms-pure-).
+
+---
+
+*[← Volver a Assembly](../../README.md)*
 
 *🌐 [github.com/yorche3/programming_languages](https://github.com/yorche3/programming_languages) · [GitHub Pages](https://yorche3.github.io/programming_languages/)*

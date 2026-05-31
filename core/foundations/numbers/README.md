@@ -32,6 +32,7 @@ Tres enfoques de implementación para los mismos 5 algoritmos: **recursivo direc
 | Archivo | Propósito |
 |---------|-----------|
 | [`Makefile`](Makefile) | Automatización de compilación (`make`, `make build`, `make run`, `make clean`) |
+| [`.gitignore`](.gitignore) | Ignora `obj/` y el ejecutable de pruebas |
 | [`README.md`](README.md) | Este archivo |
 
 ---
@@ -200,6 +201,7 @@ numbers/
 │   └── test_macros.inc            # Macros compartidas (%include)
 ├── obj/                           # Objetos (generado por make)
 ├── Makefile                       # Build automation
+├── .gitignore                     # Ignora obj/ y ejecutables
 └── README.md                      # Este archivo
 ```
 
@@ -231,5 +233,7 @@ numbers/
 - **EN:** The `assert` function compares two integers (actual vs. expected) and returns 1 if equal, 0 otherwise.
 
 ---
+
+*[← Volver a Foundations](../README.md)*
 
 *🌐 [github.com/yorche3/programming_languages](https://github.com/yorche3/programming_languages) · [GitHub Pages](https://yorche3.github.io/programming_languages/)*
