@@ -1,0 +1,7 @@
+# Objetos
+*.o
+*.obj
+
+# Ejecutables
+hello_world
+hello_world.exe
