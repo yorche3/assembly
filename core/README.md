@@ -10,6 +10,10 @@ Proyectos principales de **Assembly x86-64** agrupados por fase temática.
 |------|-------------|
 | [`foundations/`](foundations/) | **Fase 0 — Fundamentos**: `hello_world`, `hello_user`, `calculator`, `numbers` |
 
+### 🌐 Otras implementaciones / Other implementations
+
+Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
+
 ---
 
 *[← Volver a Assembly](../README.md)*
