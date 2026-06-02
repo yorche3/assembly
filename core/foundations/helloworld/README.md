@@ -185,16 +185,9 @@ helloworld/
 
 ---
 
-## 🔍 Comparativa con Ada
+### 🌐 Otras implementaciones / Other implementations
 
-| Aspecto | Ada | Assembly |
-|---------|-----|----------|
-| Punto de entrada | `procedure Hello_World is` | `_start` (sin libc) |
-| Compilación | `gprbuild hello_world.gpr` | `nasm -f elf64 hello_world.asm` |
-| Enlazado | automático (gprbuild) | manual (`ld` o `golink`) |
-| Salida | `Put_Line` (librería Ada) | `syscall` (kernel) |
-| Binario | ~200 KB (+ librerías) | ~1 KB (estático puro) |
-| Portabilidad | multiplataforma (GNAT) | requiere reescritura (syscalls distintas) |
+Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
 
 ---
 

@@ -207,17 +207,9 @@ numbers/
 
 ---
 
-## 🔍 Comparativa con Ada
+### 🌐 Otras implementaciones / Other implementations
 
-| Aspecto | Ada | Assembly |
-|---------|-----|----------|
-| Framework de pruebas | AUnit (suite, test cases, assertions) | `assert` casero + macros NASM |
-| Organización de tests | 1 suite por enfoque × 3 suites | 1 archivo por enfoque × 3 archivos |
-| Total de tests | 15 (1 por función) | 33 (múltiples casos por función) |
-| Tipado | Fuerte (compilador detecta errores de tipo) | Débil (cualquier registro es cualquier cosa) |
-| Gestión de pila | Automática (compilador) | Manual (`push`/`pop`, convención de llamada) |
-| Inicialización | `:=` con valores por defecto | `mov` explícito |
-| Dependencias | AUnit (librería externa) | Solo `syscall` (kernel) |
+Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
 
 ---
 

@@ -19,7 +19,7 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 
 ## 🏗️ Enfoque / Approach
 
-**ES:** A diferencia de Ada (que usa AUnit) o Python (que usa `unittest`), Assembly no tiene un framework de pruebas estándar. Este proyecto implementa un **marco de pruebas casero** con:
+**ES:** Assembly no tiene un framework de pruebas estándar. Este proyecto implementa un **marco de pruebas casero** con:
 
 1. **Convención de llamada** x86-64 System V AMD64: argumentos en `rdi`, `rsi`; retorno en `rax`.
 2. Cada función de prueba devuelve `0` (éxito) o `1` (fallo) en `rax`.
@@ -27,7 +27,7 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 4. Contadores en memoria estática (`tests_total`, `tests_passed`, `tests_failed`).
 5. Utilidades de impresión compartidas (`print_utils.asm`) para evitar duplicación.
 
-**EN:** Unlike Ada (which uses AUnit) or Python (which uses `unittest`), Assembly has no standard testing framework. This project implements a **custom test harness** with:
+**EN:** Assembly has no standard testing framework. This project implements a **custom test harness** with:
 
 1. **x86-64 System V AMD64 calling convention**: arguments in `rdi`, `rsi`; return in `rax`.
 2. Each test function returns `0` (pass) or `1` (fail) in `rax`.
