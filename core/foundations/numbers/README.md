@@ -6,7 +6,7 @@ Tres enfoques de implementación para los mismos 5 algoritmos: **recursivo direc
 
 ---
 
-## 📂 Archivos / Files
+## 📂 Archivos y estructura / Files & Structure
 
 ### Fuentes / Sources (`src/`)
 
@@ -37,7 +37,7 @@ Tres enfoques de implementación para los mismos 5 algoritmos: **recursivo direc
 
 ---
 
-## 🏗️ Enfoque / Approach
+## 🛠️ Enfoque y construcción / Approach & Build
 
 **ES:** Este proyecto sigue el mismo patrón que [Calculator](../unit_test/calculator/) pero con **tres módulos fuente separados** (uno por enfoque) y **tres suites de prueba independientes**. Se usa un marco de pruebas casero con:
 
@@ -86,7 +86,7 @@ Registros volátiles:     rax, rcx, rdx, rsi, rdi, r8–r11 (caller-saved)
 
 ---
 
-## 🚀 Compilar y ejecutar / Build & Run
+## 🚀 Compilación y ejecución / Build & Run
 
 ### Linux / WSL
 
@@ -184,7 +184,7 @@ test/test_utils.asm             ──►  obj/test_utils.o          ┘
 
 ---
 
-## 📁 Estructura / Structure
+**Estructura de directorios esperada:**
 
 ```text
 numbers/
@@ -207,25 +207,32 @@ numbers/
 
 ---
 
+## 📝 Notas de implementación / Implementation Notes
+
+### 🔁 Sobre recursión con acumulador y Tail Call Optimization (TCO) / On recursion with accumulator and Tail Call Optimization (TCO)
+
+**ES:**
+
+Tail recursion ocurre cuando la llamada recursiva es la última acción que ejecuta una función/método; después de la llamada no hay más instrucciones, la función devuelve el resultado de la llamada recursiva. La recursión con acumulador consigue esto pasando el estado previo como parámetro a cada llamada, sin dejar trabajo pendiente en la pila.
+
+**Assembly x86-64 no garantiza TCO.** NASM es un ensamblador, no un compilador optimizante; traduce instrucciones directamente a código máquina sin analizar flujo de control para optimizar llamadas terminales. Las funciones con acumulador (`_acc`) se conservan únicamente con fines educativos: sirven como puente conceptual entre la recursión directa (más cercana a la definición matemática) y la versión iterativa (más eficiente).
+
+Como en este contexto no hay un beneficio práctico de rendimiento, la validación del comportamiento de los acumuladores se cubre a través de pruebas directas (11 tests) que verifican sus resultados.
+
+**EN:**
+
+Tail recursion occurs when the recursive call is the last action that runs a function/method; after the call there are no more instructions, the function returns the result of the recursive call. Recursion with accumulator achieves this by passing the previous state as a parameter to each call, without leaving any pending work on the stack.
+
+**Assembly x86-64 does not guarantee TCO.** NASM is an assembler, not an optimizing compiler; it translates instructions directly to machine code without analyzing control flow to optimize tail calls. The accumulator functions (`_acc`) are preserved only for educational purposes: they serve as a conceptual bridge between direct recursion (closer to the mathematical definition) and the iterative version (more efficient).
+
+Since there is no practical performance benefit in this context, the behavior validation of accumulators is covered through direct tests (11 tests) that verify their results.
+
+---
+
 ### 🌐 Otras implementaciones / Other implementations
 
 Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
 
 ---
-
-## 📝 Notas / Notes
-
-- **ES:** Este proyecto usa exclusivamente la biblioteca estándar del sistema operativo (`syscall`). No tiene dependencias externas.
-- **EN:** This project uses only the OS standard library (`syscall`). No external dependencies.
-- **ES:** Las macros NASM (`%include "test_macros.inc"`) evitan duplicar el código de gestión de tests en los 3 archivos de prueba.
-- **EN:** NASM macros (`%include "test_macros.inc"`) avoid duplicating test management code across the 3 test files.
-- **ES:** El uso de `assert` reduce cada test de 12 a 4 líneas de código, eliminando 264 líneas de repetición en total.
-- **EN:** Using `assert` reduces each test from 12 to 4 lines of code, eliminating 264 lines of repetition in total.
-- **ES:** La función `assert` compara dos enteros (resultado real vs. esperado) y retorna 1 si son iguales, 0 si no.
-- **EN:** The `assert` function compares two integers (actual vs. expected) and returns 1 if equal, 0 otherwise.
-
----
-
-*[← Volver a Foundations](../README.md)*
 
 *🌐 [github.com/yorche3/programming_languages](https://github.com/yorche3/programming_languages) · [GitHub Pages](https://yorche3.github.io/programming_languages/)*

@@ -4,7 +4,7 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 
 ---
 
-## 📂 Archivos / Files
+## 📂 Archivos y estructura / Files & Structure
 
 | Archivo | Propósito |
 |---------|-----------|
@@ -15,9 +15,25 @@ Implementación de la especificación [03_Unit_Test_Calculator](https://yorche3.
 | [`Makefile`](Makefile) | Automatización de compilación (`make`, `make build`, `make run`, `make clean`) para Linux/WSL. |
 | [`run_tests.ps1`](run_tests.ps1) | Script PowerShell equivalente para Windows (requiere WSL o MSYS2). |
 
+**Estructura de directorios esperada:**
+
+```text
+calculator/
+├── src/
+│   └── calculator.asm            # Módulo Calculator / Calculator module
+├── test/
+│   ├── calculator_test.asm       # Suite de pruebas / Test suite
+│   ├── run_tests.asm             # Punto de entrada / Entry point
+│   └── print_utils.asm           # Utilidades de impresión / Print utilities
+├── obj/                          # Objetos (generado por make)
+├── Makefile                      # Build automation (Linux/WSL)
+├── run_tests.ps1                 # Build automation (Windows PowerShell)
+└── README.md                     # Este archivo / This file
+```
+
 ---
 
-## 🏗️ Enfoque / Approach
+## 🛠️ Enfoque y construcción / Approach & Build
 
 **ES:** Assembly no tiene un framework de pruebas estándar. Este proyecto implementa un **marco de pruebas casero** con:
 
@@ -46,7 +62,7 @@ Registros volátiles:     rax, rcx, rdx, rsi, rdi, r8–r11 (caller-saved)
 
 ---
 
-## 🚀 Compilar y ejecutar / Build & Run
+## 🚀 Compilación y ejecución / Build & Run
 
 ### Linux / WSL
 
@@ -172,25 +188,21 @@ modulus_function:
 
 ---
 
-## 📁 Estructura / Structure
+---
 
-```text
-calculator/
-├── src/
-│   └── calculator.asm            # Módulo Calculator / Calculator module
-├── test/
-│   ├── calculator_test.asm       # Suite de pruebas / Test suite
-│   ├── run_tests.asm             # Punto de entrada / Entry point
-│   └── print_utils.asm           # Utilidades de impresión / Print utilities
-├── obj/                          # Objetos (generado por make)
-├── Makefile                      # Build automation (Linux/WSL)
-├── run_tests.ps1                 # Build automation (Windows PowerShell)
-└── README.md                     # Este archivo / This file
-```
+## 🧠 Algoritmos / operaciones (según el módulo)
+
+| Función / Function | Implementación / Implementation | Cumple / Complies |
+|-------------------|-------------------------------|-------------------|
+| `addition(a, b)` | `a + b` (suma directa / direct addition) | ✅ No usa operadores educativos |
+| `subtraction(a, b)` | `a - b` (resta directa / direct subtraction) | ✅ No usa operadores educativos |
+| `multiplication(a, b)` | Suma repetitiva de `a`, `b` veces / Repeated addition | ✅ No usa `*` |
+| `division(a, b)` | Resta repetitiva: cuántas veces cabe `b` en `a` / Repeated subtraction | ✅ No usa `/` |
+| `modulus(a, b)` | `a - (division(a, b) * multiplication(division(a, b), b))` usando `division` y `multiplication` | ✅ No usa `%` |
 
 ---
 
-## 📝 Notas / Notes
+## 📝 Notas de implementación / Implementation Notes
 
 - **ES:** Este proyecto usa exclusivamente la biblioteca estándar del sistema operativo (`syscall`). No tiene dependencias externas.
 - **EN:** This project uses only the OS standard library (`syscall`). No external dependencies.
@@ -198,6 +210,12 @@ calculator/
 - **EN:** The test suite is implemented with NASM macros to keep the code readable and educational.
 - **ES:** El manejo de errores (división por cero) usa `-1` como valor centinela ya que assembly no tiene excepciones.
 - **EN:** Error handling (division by zero) uses `-1` as a sentinel value since assembly has no exceptions.
+
+---
+
+### 🌐 Otras implementaciones / Other implementations
+
+Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
 
 ---
 

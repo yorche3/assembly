@@ -4,18 +4,31 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 ---
 
-## 📂 Archivos / Files
+## 📂 Archivos y estructura / Files & Structure
 
 | Archivo | Propósito |
 |---------|-----------|
 | [`hello_world.asm`](hello_world.asm) | Código fuente NASM: imprime `"Hello, World! from Assembly"` en la consola y sale con código 0. |
 | [`Makefile`](Makefile) | Compilación en Linux: `nasm` + `ld`. |
 | [`build.ps1`](build.ps1) | Compilación en Windows: `nasm` + `golink` (PowerShell). |
-| [`README.md`](README.md) | Este archivo. |
+
+**Estructura de directorios esperada:**
+
+```text
+helloworld/
+├── hello_world.asm    # Código fuente NASM
+├── Makefile           # Build para Linux
+├── build.ps1          # Build para Windows
+├── README.md          # Este archivo
+├── hello_world        # Ejecutable (generado, Linux)
+├── hello_world.exe    # Ejecutable (generado, Windows)
+├── hello_world.o      # Objeto (generado, Linux)
+└── hello_world.obj    # Objeto (generado, Windows)
+```
 
 ---
 
-## 🛠️ Enfoque / Approach
+## 🛠️ Enfoque y construcción / Approach & Build
 
 **ES:** Este proyecto usa **NASM** (Netwide Assembler) con sintaxis Intel para x86_64. Se emplean **llamadas directas al sistema** (`syscall`) en lugar de la biblioteca C estándar, lo que da control total sobre el binario generado.
 
@@ -35,7 +48,7 @@ Features:
 
 ---
 
-## 📄 Archivos clave / Key Files
+## 📄 Archivos de configuración clave / Key Configuration Files
 
 ### `hello_world.asm`
 
@@ -107,7 +120,7 @@ OBJ      = hello_world.o
 
 ---
 
-## 🚀 Compilar y ejecutar / Build & Run
+## 🚀 Compilación y ejecución / Build & Run
 
 ### Linux
 
@@ -159,29 +172,12 @@ hello_world.exe
 
 ---
 
-## 📦 Requisitos / Requirements
+## 📝 Notas de implementación / Implementation Notes
 
-| Herramienta | Linux | Windows |
-|-------------|-------|---------|
-| [NASM](https://www.nasm.us/) | `sudo apt install nasm` | `winget install nasm` |
-| `ld` (GNU binutils) | `sudo apt install binutils` | — |
-| [GoLink](https://www.godevtool.com/) | — | Descargar y agregar al PATH |
-
----
-
-## 📁 Estructura / Structure
-
-```text
-helloworld/
-├── hello_world.asm    # Código fuente NASM
-├── Makefile           # Build para Linux
-├── build.ps1          # Build para Windows
-├── README.md          # Este archivo
-└── hello_world        # Ejecutable (generado, Linux)
-└── hello_world.exe    # Ejecutable (generado, Windows)
-└── hello_world.o      # Objeto (generado, Linux)
-└── hello_world.obj    # Objeto (generado, Windows)
-```
+- **ES:** NASM no tiene un sistema de construcción integrado; se usan `Makefile` (Linux) y `build.ps1` (Windows) como envoltorios.
+- **EN:** NASM has no built-in build system; `Makefile` (Linux) and `build.ps1` (Windows) are used as wrappers.
+- **ES:** El punto de entrada es `_start`, no `main`, porque no se usa libc.
+- **EN:** The entry point is `_start`, not `main`, because no libc is used.
 
 ---
 

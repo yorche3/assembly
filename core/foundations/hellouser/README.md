@@ -6,18 +6,31 @@ Lee un nombre desde la entrada estándar y saluda al usuario.
 
 ---
 
-## 📂 Archivos / Files
+## 📂 Archivos y estructura / Files & Structure
 
 | Archivo | Propósito |
 |---------|-----------|
 | [`hello_user.asm`](hello_user.asm) | Código fuente NASM: pide un nombre, lo lee, imprime `"Hello, <nombre>!"`. |
 | [`Makefile`](Makefile) | Compilación en Linux: `nasm` + `ld`. |
 | [`build.ps1`](build.ps1) | Compilación en Windows: `nasm` + `golink` (PowerShell). |
-| [`README.md`](README.md) | Este archivo. |
+
+**Estructura de directorios esperada:**
+
+```text
+hellouser/
+├── hello_user.asm     # Código fuente NASM
+├── Makefile           # Build para Linux
+├── build.ps1          # Build para Windows
+├── README.md          # Este archivo
+├── hello_user         # Ejecutable (generado, Linux)
+├── hello_user.exe     # Ejecutable (generado, Windows)
+├── hello_user.o       # Objeto (generado, Linux)
+└── hello_user.obj     # Objeto (generado, Windows)
+```
 
 ---
 
-## 🛠️ Enfoque / Approach
+## 🛠️ Enfoque y construcción / Approach & Build
 
 **ES:** Este programa introduce dos conceptos nuevos respecto a `hello_world`:
 
@@ -31,7 +44,7 @@ Lee un nombre desde la entrada estándar y saluda al usuario.
 
 ---
 
-## 📄 Archivos clave / Key Files
+## 📄 Archivos de configuración clave / Key Configuration Files
 
 ### `hello_user.asm`
 
@@ -136,7 +149,7 @@ skip:
 
 ---
 
-## 🚀 Compilar y ejecutar / Build & Run
+## 🚀 Compilación y ejecución / Build & Run
 
 ### Linux
 
@@ -179,31 +192,16 @@ Hello, Ada
 
 ---
 
-## 📁 Estructura / Structure
-
-```text
-hellouser/
-├── hello_user.asm     # Código fuente NASM
-├── Makefile           # Build para Linux
-├── build.ps1          # Build para Windows
-├── README.md          # Este archivo
-├── hello_user         # Ejecutable (generado, Linux)
-├── hello_user.exe     # Ejecutable (generado, Windows)
-├── hello_user.o       # Objeto (generado, Linux)
-└── hello_user.obj     # Objeto (generado, Windows)
-```
-
 ---
 
-## 🔍 Novedades respecto a `hello_world`
+## 📝 Notas de implementación / Implementation Notes
 
-| Concepto | `hello_world` | `hello_user` |
-|----------|---------------|--------------|
-| Entrada | No | `sys_read` desde stdin |
-| Buffer | Solo `.data` | `.bss` + `.data` |
-| Saltos condicionales | No | `cmp` / `jne` |
-| Procesamiento de datos | No | Eliminar `\n` del buffer |
-| Registro usado | `eax`, `edi`, `rsi`, `edx` | + `rbx` (contar bytes), `al` (comparar) |
+- **ES:** `hello_user` introduce `sys_read` (syscall 0), buffer en `.bss` con `resb`, y procesamiento del `\n` final con `cmp`/`jne`.
+- **EN:** `hello_user` introduces `sys_read` (syscall 0), `.bss` buffer with `resb`, and trailing `\n` processing with `cmp`/`jne`.
+- **ES:** El buffer es de 64 bytes fijos; si el nombre excede ese tamaño, se trunca.
+- **EN:** The buffer is fixed at 64 bytes; if the name exceeds that size, it gets truncated.
+
+---
 
 ### 🌐 Otras implementaciones / Other implementations
 
