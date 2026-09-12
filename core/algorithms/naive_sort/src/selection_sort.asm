@@ -1,14 +1,17 @@
-.section .text
-    global _start
+section .text
 
 ; Selection sort function
 ; Input: RDI - pointer to the array
 ;        RSI - length of the array
-; Output: RAX - 0 if the array is null, otherwise undefined
-; clobbers: rax, rbx -> temp, rcx -> min_index, rdx, r8 -> i, r9 -> j
+; Output: RAX - same pointer as RDI, array sorted ascending in place.
+;         RAX - 0 if the array is null (failure indicator).
+; clobbers: rax, rbx (saved/restored), rcx -> n - 2, rdx -> min_index, r8 -> i, r9 -> j
+global selection_sort
 selection_sort:
     test    rdi, rdi    ; Check if the array pointer is null
     jz      .array_null
+
+    push    rbx
 
     cmp     rsi, 2      ; Check if the array length is less than 2
     jl      .done
@@ -45,7 +48,10 @@ selection_sort:
     inc     r8
     jmp     .outer_loop
 
+.done:
+    pop     rbx
+    mov     rax, rdi
+    ret
 .array_null:
     xor     rax, rax    ; return 0 if the array is null
-.done:
     ret

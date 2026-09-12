@@ -1,11 +1,12 @@
-.section .text
-    global _start
+section .text
 
 ; Insertion sort function
 ; Input: RDI - pointer to the array
 ;        RSI - length of the array
-; Output: RAX - 0 if the array is null, otherwise undefined
-; clobbers: rax, rbx -> temp, rcx -> key, rdx , r8 -> i, r9 -> j
+; Output: RAX - same pointer as RDI, array sorted ascending in place.
+;         RAX - 0 if the array is null (failure indicator).
+; clobbers: rax, rcx -> key, r8 -> i, r9 -> j
+global insertion_sort
 insertion_sort:
     test    rdi, rdi    ; Check if the array pointer is null
     jz      .array_null
@@ -37,7 +38,9 @@ insertion_sort:
     inc     r8
     jmp     .outer_loop
 
+.done:
+    mov     rax, rdi
+    ret
 .array_null:
     xor     rax, rax    ; return 0 if the array is null
-.done:
     ret
