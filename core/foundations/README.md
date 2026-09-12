@@ -134,17 +134,9 @@ foundations/
 
 ---
 
-## 🔍 Comparativa con Ada Foundations
+### 🌐 Otras implementaciones / Other implementations
 
-| Aspecto | Ada | Assembly |
-|---------|-----|----------|
-| Gestor de proyectos | Alire (`alr build`) | Makefile (`make build`) |
-| Framework de pruebas | AUnit (suite + assertions) | Casero (`assert` + macros NASM) |
-| Tipado | Fuerte, estático | Débil (registros) |
-| Memoria | Automática (GC no, pero gestión de stack implícita) | Manual (`push`/`pop`, convención de llamada) |
-| Portabilidad | Multiplataforma nativa (GNAT) | Requiere reescritura de syscalls por SO |
-| Tamaño binario | ~200 KB–2 MB (con librerías) | ~1–8 KB (estático puro) |
-| Dependencias | AUnit, GNAT | Ninguna (solo kernel) |
+Este proyecto también está implementado en otros lenguajes. Explora el [repositorio principal](https://github.com/yorche3/programming_languages) para ver todas las versiones.
 
 ---
 
