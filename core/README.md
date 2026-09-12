@@ -9,6 +9,7 @@ Proyectos principales de **Assembly x86-64** agrupados por fase temática.
 | Fase | Descripción |
 |------|-------------|
 | [`foundations/`](foundations/) | **Fase 0 — Fundamentos**: `hello_world`, `hello_user`, `calculator`, `numbers` |
+| [`algorithms/`](algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
 
 ### 🌐 Otras implementaciones / Other implementations
 
