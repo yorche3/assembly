@@ -7,7 +7,7 @@ TEST_DIR := test
 OBJ_DIR  := obj
 TARGET   := $(TEST_DIR)/run_tests
 
-ASMFLAGS := -f elf64 -g -F dwarf -I$(TEST_DIR)/
+ASMFLAGS := -f elf64 -g -F dwarf -I$(SRC_DIR)/ -I$(TEST_DIR)/
 
 SRC_FILES    := $(wildcard $(SRC_DIR)/*.asm)
 TEST_FILES   := $(filter-out $(TEST_DIR)/run_tests.asm,$(wildcard $(TEST_DIR)/*.asm))
