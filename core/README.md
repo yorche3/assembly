@@ -4,12 +4,12 @@ Proyectos principales de **Assembly x86-64** agrupados por fase temática.
 
 ---
 
-## 📂 Fases / Phases
+## 📂 Módulos / Modules
 
 | Fase | Descripción |
 |------|-------------|
 | [`foundations/`](foundations/) | **Fase 0 — Fundamentos**: `hello_world`, `hello_user`, `calculator`, `numbers` |
-| [`algorithms/`](algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
+| [`algorithms/`](algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` ✅, `data_structures_basics` ✅ |
 
 ### 🌐 Otras implementaciones / Other implementations
 
