@@ -1,5 +1,5 @@
 section .data
-    msg db 'Hello, World! from Assembly', 0xA  ; message with newline
+    msg db 'Hello, World! from Assembly!', 0xA  ; message with newline
     len equ $ - msg              ; length of message
 
 section .text

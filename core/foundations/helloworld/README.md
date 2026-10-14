@@ -8,7 +8,7 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`hello_world.asm`](hello_world.asm) | Código fuente NASM: imprime `"Hello, World! from Assembly"` en la consola y sale con código 0. |
+| [`hello_world.asm`](hello_world.asm) | Código fuente NASM: imprime `"Hello, World! from Assembly!"` en la consola y sale con código 0. |
 | [`Makefile`](Makefile) | Compilación en Linux: `nasm` + `ld`. |
 | [`build.ps1`](build.ps1) | Compilación en Windows: `nasm` + `golink` (PowerShell). |
 
