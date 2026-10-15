@@ -6,6 +6,7 @@ section .data
     prompt_len equ $ - prompt
     greeting db 'Hello, ', 0
     greeting_len equ $ - greeting
+    bang    db '!', 0
     newline db 0xA
     space   db ' ', 0
 
@@ -50,6 +51,12 @@ skip_newline:
     mov rdi, 1
     mov rsi, name
     mov rdx, rbx        ; number of bytes to print
+    syscall
+    ; print exclamation mark
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, bang
+    mov rdx, 1
     syscall
 
     ; print newline
