@@ -1,5 +1,9 @@
-; Each named input is a sequence of operation, three arguments, output, mode.
-; Modes: 0 = void, 1 = scalar, 2 = neighbours, 3 = saved neighbours.
+; Cada entrada con nombre es una secuencia de pasos. Un paso son seis
+; palabras de 64 bits: función, tres argumentos, resultado esperado y modo.
+; Modos: 0 = sin comprobación (solo efecto), 1 = escalar contra el esperado,
+; 2 = copia de vecinos, 3 = copia de vecinos ya guardada.
+; Las macros de abajo son atajos de preparación: `tree_start` crea el padre,
+; `children_start` añade los dos hijos y `graph_pair` registra 10 y 30.
 %macro operation 2
     extern %1
     section .data

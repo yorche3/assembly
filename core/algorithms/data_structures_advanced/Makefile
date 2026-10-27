@@ -25,7 +25,7 @@ build:
 	@$(MAKE) --no-print-directory $(TARGET)
 
 run: build
-	@echo "=== Running Data Structures Basics Unit Tests ==="
+	@echo "=== Running Data Structures Advanced Unit Tests ==="
 	@./$(TARGET)
 
 $(OBJ_DIR):

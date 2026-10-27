@@ -1,3 +1,33 @@
+; data_structures_advanced_tests.asm — suite del módulo 07.
+;
+; La suite es una TABLA: cada caso de la especificación es una fila y cada
+; fila es una secuencia de pasos. No hay un `test_*` escrito a mano por caso;
+; el ejecutor (execute_operation, al final del fichero) recorre la tabla.
+;
+; Piezas:
+;   * `operation <función>, "<nombre>"`: declara el símbolo externo y guarda
+;     su nombre para los mensajes del reporte.
+;   * `case_entry <caso>, "<texto>"`: una fila = nombre + tabla de pasos
+;     (<caso>_input) + tabla de resultados esperados (<caso>_output). El
+;     nombre usa la forma «Abstracción/caso» para que el reporte se lea
+;     agrupado.
+;   * `step <op>, <arg1>, <arg2>, <arg3>, <esperado>, <modo>`: un paso son
+;     seis palabras de 64 bits que el ejecutor carga en rdi, rsi y rdx.
+;     Modos: 0 = sin comprobación (solo efecto), 1 = escalar contra
+;     <esperado>, 2 = copia de vecinos, 3 = copia de vecinos ya guardada.
+;
+; Convenciones que conviene tener presentes al leer las filas:
+;   * Un argumento con valor -2 significa «el resultado del paso anterior»;
+;     así se encadena, por ejemplo, `tree_node_get_left` con el
+;     `tree_node_get_value` del hijo devuelto.
+;   * Los fixtures (`parent_fixture`, `left_fixture`, `right_fixture`,
+;     `tree_fixture`, `graph_fixture`) son almacenamiento del propio test;
+;     las macros `tree_start`, `children_start` y `graph_pair` los preparan.
+;     Antes de cada caso se reinician; las tablas de entrada esperada no se
+;     tocan nunca.
+;   * El ejecutor comprueba FAILURE y ABSENT antes de recorrer una lista
+;     devuelta, porque ambas cosas son valores válidos de retorno.
+
 %include "data_structures_advanced.inc"
 %include "test_macros.inc"
 
@@ -56,7 +86,8 @@ section .data
     case_message db " in case ", 0
     newline db 10, 0
 
-    ; One row per specification case; immutable adaptation is not applicable.
+    ; Una fila por cada caso de la especificación. La fila condicional
+    ; «adaptación inmutable» no aplica en assembly: los setters mutan.
     cases:
     case_entry create_node, "TreeNode/create a tree node"
     case_entry initial_links, "TreeNode/absent initial links"
@@ -371,7 +402,8 @@ run_data_structures_advanced_tests:
 .case:
     cmp rbx, cases_end
     jae .done
-    ; Reset caller-owned storage, never the immutable input/expected tables.
+    ; Se reinicia el almacenamiento del caso (fixtures y estructuras), nunca
+    ; las tablas inmutables de entrada esperada.
     mov rdi, fixtures_start
     mov ecx, fixtures_end - fixtures_start
     xor eax, eax
@@ -445,7 +477,8 @@ execute_operation:
 .element:
     test r15, r15
     jz .end_neighbors
-    ; Failure/absence must be checked before accessing a returned list.
+    ; El fallo o la ausencia se comprueban ANTES de recorrer una lista
+    ; devuelta: rax puede ser FAILURE (-1) o ABSENT (0).
     cmp rbp, FAILURE
     je .failed
     test rbp, rbp
@@ -522,7 +555,8 @@ execute_operation:
     ret
 
 mutate_copy:
-    ; Only the independently returned, already validated copy is modified.
+    ; Solo se modifica la copia independiente ya validada: si el grafo
+    ; cambiara por ello, el caso de aislamiento fallaría.
     mov rax, [last_result]
     mov qword [rax + NeighborNode.label], 99
     mov eax, 1
