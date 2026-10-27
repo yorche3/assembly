@@ -9,7 +9,7 @@ Proyectos en **Assembly x86-64** con **NASM**, usando únicamente la biblioteca 
 | Módulo | Descripción |
 |--------|-------------|
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `hello_world`, `hello_user`, `calculator`, `numbers` |
-| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` ✅, `data_structures_basics` ✅ |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` ✅, `data_structures_basics` ✅, `data_structures_advanced` ✅ |
 
 ---
 
@@ -27,6 +27,15 @@ cd core/foundations/unit_test/calculator && make run
 
 # Numbers Tests
 cd core/foundations/numbers && make run
+
+# Naive Sort Tests
+cd core/algorithms/naive_sort && make run
+
+# Data Structures Basics Tests
+cd core/algorithms/data_structures_basics && make run
+
+# Data Structures Advanced Tests
+cd core/algorithms/data_structures_advanced && make run
 ```
 
 ---

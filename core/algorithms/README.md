@@ -12,7 +12,7 @@ Los módulos de esta fase no enlazan con libc: usan `syscall` para el sistema y 
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `Makefile` + `test/` | 24 | ✅ |
 | [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `Makefile` + `test/` | 15 | ✅ |
-| `data_structures_advanced` | [07_Data_Structures_Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | — | — | 📋 |
+| [`data_structures_advanced/`](data_structures_advanced/) | [07_Data_Structures_Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | `Makefile` + `test/` | 23 | ✅ |
 | `efficient_sort` | [08_Efficient_Sort](https://yorche3.github.io/programming_languages/core/algorithms/08_Efficient_Sort/) | — | — | 📋 |
 | `distributed_sort` | [09_Distributed_Sort](https://yorche3.github.io/programming_languages/core/algorithms/09_Distributed_Sort/) | — | — | 📋 |
 | `searching` | [10_Searching](https://yorche3.github.io/programming_languages/core/algorithms/10_Searching/) | — | — | 📋 |
@@ -45,6 +45,9 @@ cd naive_sort && make
 
 # Data Structures Basics
 cd ../data_structures_basics && make
+
+# Data Structures Advanced
+cd ../data_structures_advanced && make
 ```
 
 ---
