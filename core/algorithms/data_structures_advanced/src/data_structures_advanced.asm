@@ -220,13 +220,15 @@ binary_tree_contains:
 ; ============================================================
 ; binary_tree_is_empty
 ; Argumentos: rdi = const BinaryTree *
-; Devuelve: rax = 1 si está vacío, 0 si no
+; Devuelve: rax = SUCCESS (0) si está vacío, FAILURE (-1) si tiene algún nodo
 ; Se usa la raíz como indicador: la raíz y el contador se mueven juntos.
 ; ============================================================
 binary_tree_is_empty:
-    xor eax, eax
+    mov rax, FAILURE
     cmp qword [rdi + BinaryTree.root], ABSENT
-    sete al
+    jne .done
+    mov eax, SUCCESS
+.done:
     ret
 
 ; ============================================================
@@ -504,13 +506,15 @@ graph_get_neighbors:
 ; ============================================================
 ; graph_is_empty: vacío significa SIN VÉRTICES.
 ; Argumentos: rdi = const Graph *
-; Devuelve: rax = 1 si no hay vértices, 0 si hay alguno
+; Devuelve: rax = SUCCESS (0) si no hay vértices, FAILURE (-1) si hay alguno
 ; Un grafo con vértices aislados no está vacío; sus vecinos sí lo están.
 ; ============================================================
 graph_is_empty:
-    xor eax, eax
+    mov rax, FAILURE
     cmp qword [rdi + Graph.vertex_total], 0
-    sete al
+    jne .done
+    mov eax, SUCCESS
+.done:
     ret
 
 ; ============================================================

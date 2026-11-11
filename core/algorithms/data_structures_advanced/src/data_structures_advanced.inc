@@ -7,10 +7,13 @@
 ;   * Salvados por el destinatario: rbx, rbp, r12-r15. Volátiles: rax, rcx,
 ;     rdx, rsi, rdi, r8-r11 (no sobreviven a un `call`).
 ;
-; Indicadores: FAILURE = -1 (la operación falla), ABSENT = 0 (ausencia de
-; enlace, de vértice o lista vacía) y SUCCESS = 1. Son valores distintos a
-; propósito: el contrato exige distinguir «vértice aislado» de «vértice
-; inexistente».
+; Indicadores, con el mismo código en todo el módulo: SUCCESS = 0 (la
+; operación se completa o la pregunta se responde «sí»), FAILURE = -1 (falla o
+; se responde «no») y ABSENT = 0 (ausencia de enlace, de vértice o lista
+; vacía). FAILURE frente a ABSENT sigue siendo la distinción que el contrato
+; exige entre «vértice aislado» y «vértice inexistente»; SUCCESS y ABSENT
+; comparten el 0 porque son dominios distintos: código de resultado frente a
+; puntero nulo.
 ;
 ; Los nodos salen de alloc.asm (montículo monótono sobre `brk`, sin
 ; liberación), porque el contrato no tiene operación de destrucción.
@@ -20,7 +23,7 @@
 
 %define FAILURE -1
 %define ABSENT   0
-%define SUCCESS  1
+%define SUCCESS  0
 
 ; Base del módulo: SOLO el valor. No tiene enlaces, no valida nada y no se
 ; instancia por sí sola; los hijos la reutilizan por valor EMBEBIDO.

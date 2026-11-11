@@ -55,8 +55,8 @@ section .data
     success_output dq SUCCESS
     failure_output dq FAILURE
     absent_output dq ABSENT
-    true_output dq 1
-    false_output dq 0
+    true_output dq SUCCESS
+    false_output dq FAILURE
     zero_output dq 0
     one_output dq 1
     two_output dq 2
